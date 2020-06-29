@@ -1,0 +1,23 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-order
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    sleuth:
+      sampler:   #1全部采集  0到一之间
+        probability: 1
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        host: 127.0.0.1
+        service-name: ${spring.application.name}
+management:
+  endpoint:
+    web:
+      exposure:
+        include: '*'
